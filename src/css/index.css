@@ -1,0 +1,8 @@
+html {
+  box-sizing: content-box;
+  background-color: #191923;
+}
+
+html * {
+  box-sizing: inherit;
+}
