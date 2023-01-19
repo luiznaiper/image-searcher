@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import './css/index.css';
 import './css/header.css';
-import { useState } from 'react';
+import './css/content.css';
+import './css/article.css';
 
 function App() {
   const [photos, setPhotos] = useState([]);
+  const open = (url) => window.open(url);
   console.log({ photos });
 
   return (
@@ -30,6 +33,18 @@ function App() {
           </Form>
         </Formik>
       </header>
+      <h1>Image Searcher (No Responsive)</h1>
+      <p>Images from unsplash API</p>
+      <div className="container">
+        <div className="center">
+          {photos.map((photo) => (
+            <article key={photo.id} onClick={() => open(photo.links.html)}>
+              <img src={photo.urls.regular} />
+              <p>{[photo.description, photo.alt_description].join(' - ')}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
